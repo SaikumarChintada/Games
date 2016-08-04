@@ -1,5 +1,6 @@
 body{
 	text-align: center;
+	margin:0px;
 }
 #name{
 	color:grey;
@@ -8,11 +9,24 @@ body{
 	margin-top:100px;
 	height: 400px;
 }
+.marker{
+	display: inline-block;
+	height: 50px;
+	width: 50px; 
+	background: grey;
+	color:#f1f1f1; 
+	font-size: 36px;
+}
+#o{
+	background: #f1f1f1;
+	color:grey;
+}
 #board{
 	text-align: center;
 }
 .block{
 	font-size: 36px;
+	font-style: helvetica;
 	vertical-align: top;
 	display: inline-block;
 	background: #f1f1f1;
@@ -23,6 +37,7 @@ body{
 }
 .block:hover{
 	background: grey;
+	color:white;
 }
 #footer-name{
 	margin-top:20px;
