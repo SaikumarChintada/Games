@@ -3,10 +3,14 @@ var ttt_board = ['','','','','','','','',''];
 var sim_board = ['','','','','','','','',''];
 //2d-array board representation is better
 
+var ttt_board2 = [['','',''],['','',''],['','','']];
+var sim_board2 = [['','',''],['','',''],['','','']];
+
 var player_marker;
 var ai_marker;
 var last_move;
 
+//Ai Logic : Minmax, Alpha-Beta Pruning
 //dumb AI
 function ai_next_move(){
 	console.log(last_move);
@@ -24,6 +28,7 @@ function ai_next_move(){
 	}
 }
 
+//Game Validation Logic
 function is_game_over(){
 	win_pos = [[0,1,2],
 				[3,4,5],
@@ -57,12 +62,17 @@ function valid_position(id){
 }
 function update(id){
 	ttt_board[id] = player_marker;
+	//code for 2d-board
+	var i = id/3;
+	var j = id%3;
+	console.log(i);
+	ttt_board2[i][j] = player_marker;
+	console.log(ttt_board2);
 	var str = '#'+id.toString();
 	$(str).html(player_marker);
 }
 
-//Game init
-
+//Game initialization Logic
 function create_board(rows,cols){
 	var board = $('#board');
 	for(var i =0;i<rows;i++){
@@ -75,8 +85,6 @@ function create_board(rows,cols){
 		board.append('<br>');
 	}
 }
-
-
 function create_a_marker(marker,markers){
 	var div = document.createElement('div');
 	div.id=marker;
@@ -93,7 +101,6 @@ function clear_markers(){
 	$('#x').css('display','none');
 	$('#o').css('display','none');
 }
-
 function select_marker(){
 	$('.marker').on('click',function(){
 		var id = $(this).attr('id');
@@ -108,8 +115,6 @@ function select_marker(){
 		start_game(3,3);
 	});
 }
-
-
 function start_game(n,m){
 	create_board(n,m);
 	$('.block').on('click',function(){
